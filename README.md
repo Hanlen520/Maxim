@@ -269,7 +269,35 @@ max.flushImagesThreshold  =50 回溯区间大小xx张
 
 <hr>
 
+2019.08.16 update
+1.mix 增加 back event 默认事件占比 10%
+--pct-back 5 （设置占比 5）
 
+2.mix 增加 重启 app event 默认事件占比 0.3%
+--pct-reset 0 (关闭重启 事件)
+
+mix 增加 null intent event 默认事件占比 0.2% 该事件探测 app 中 exported 组件，随机发 null intent --pct-nullintent 0 (关闭 null intent 事件)
+4. 增加 monkey api
+如何使用：
+1）先启动 monkey
+adb shell CLASSPATH=/sdcard/monkey.jar:/sdcard/framework.jar exec app_process /system/bin tv.panda.test.monkey.Monkey -p com.panda.videoliveplatform --uiautomatorapi --running-minutes 100 -v -v -v -v
+2）adb shell netcfg 查看 ip
+3) 结合 Monkeyapi.py 编写自己的 test.py
+
+目前提供了如下接口
+1）dumptree
+getXml()
+2) 点击
+click(500,550)
+3）back
+back()
+4) 截屏 base64
+getScreenShotBase64()
+
+
+demo
+https://github.com/zhangzhao4444/Maxim/blob/master/MonkeyApi.py 无须修改
+https://github.com/zhangzhao4444/Maxim/blob/master/test.py
 
 ## 1. Requirements
 
